@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="es"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload assets -->
+  <link rel="preload" href="img/logo.png" as="image">
+  <link rel="preload" href="img/clouds.png" as="image">
+  <link rel="preload" href="img/grass.png" as="image">
+  <link rel="preload" href="img/water.png" as="image">
+  <link rel="preload" href="fonts/cairo.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/icons.woff" as="font" crossorigin="">
+
+  <!-- preload fonts -->
+  <style>
+    /** Fonts **/
+    @font-face
+    {
+      font-display: swap;
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Cairo'), local('Cairo-Regular'), url('fonts/cairo.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face
+    {
+      font-display: swap;
+      font-family: 'icons';
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+      src: url('fonts/icons.woff') format('woff');
+    }
+  </style>
+
+  <!-- -->
+  <link rel="icon" href="img/logo.png">
+
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+
+  <!-- Website metadata -->
+  <title>Verde, Flipstarter</title>
+  <meta property="og:title" content="Flipstarter: Bitcoin Verde">
+  <meta property="og:description" content="Bitcoin Verde flipstarter fundraising campaign.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="verde.flipstarter.cash">
+  <meta property="og:image" content="https://verde.flipstarter.cash/img/verde-logo.png">
+  <meta property="og:image:alt" content="Bitcoin Verde logo image.">
+  <meta property="og:article:section" content="Technology">
+  <meta property="og:article:tag" content="Bitcoin">
+  <meta property="og:article:tag" content="Bitcoin Cash">
+  <meta property="og:article:tag" content="BCH">
+  <meta property="og:article:tag" content="Bitcoin Verde">
+  <meta property="og:article:tag" content="Cryptocurrencies">
+  <meta property="og:article:tag" content="Fundraising">
+  <meta property="og:article:tag" content="Infrastructure">
+</head>
+<body class="clouds">
+  <div class="grass">
+    <div class="background">
+
+      <!-- Site header -->
+      <header id="header" class="container row center">
+        <h1 class="cols s12 m12 l12">
+          <img src="img/logo.png" alt="Flipstarter logotype">
+          <span>Flipstarter</span>
+        </h1>
+        <p class="col s12 m12 l12" data-string="siteIntro">La financiación de la infraestructura de Bitcoin Cash es importante, y la diversidad de esa infraestructura crea un ecosistema resiliente. Flipstarter proporciona una vía para que cualquier proyecto se relacione con posibles contribuidores de una manera que fomente responsabilidad para los proyectos y ecuanimidad para los contribuidores.</p>
+        <ul class="col s10 m10 l10 push-s1 push-m1 push-l1" style="display: flex; justify-content: center; text-align: left;">
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/introducing-flipstarter-31ce86f3">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkWhatIs">¿Qué es Flipstarter?</span>
+            </a>
+          </li>
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/how-to-support-a-flipstarter-campaign-f27240d9">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkHowTo">¿Cómo usar Flipstarter?</span>
+            </a>
+          </li>
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/flipstarter-faq-66c56b03">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkFAQ">Preguntas frecuentes.</span>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- Site content -->
+      <main class="container row z-depth-2">
+
+        <!-- Campaign -->
+        <article id="campaign" class="col s12 m12 l8" style="margin-bottom: 0.75rem;">
+          <h1 style="display: none;">Campaign</h1>
+
+          <!-- Campaign overview -->
+          <section id="overview">
+            <h2 style="display: none;">Campaign overview</h2>
+            <div style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-access_time"></i>
+                <span id="timerLabel" data-string="fullfilledLabel">Finaciada</span>
+                <b id="campaignExpiration">hace 3 meses</b>
+              </span>
+            </div>
+            <div style="float: right;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-bookmark_border"></i>
+                <span id="compaignContributionAmount">241.00</span>
+                <i>/</i>
+                <span id="campaignRequestAmount">241.00</span>
+                <b>BCH</b>
+              </span>
+            </div>
+            <div class="progress">
+              <div class="determinate" id="campaignProgressBar" style="width: 100%;"></div>
+              <div class="determinate" id="campaignContributionBar" style="left: 100%; width: 0%;"></div>
+            </div>
+          </section>
+
+          <!-- Campaign heading -->
+          <header id="campaignAbstract"><p>Durante los últimos años, Bitcoin Verde ha sido mantenido por un pequeño grupo de desarrolladores con la esperanza de apoyar la red BCH a través de la diversidad de nodos. Somos desarrolladores apasionados por el software que sirve a sus usuarios proporcionando un valor real a sus vidas cotidiana. Lo que comenzó como una experiencia educativa, el desarrollo y el mantenimiento de Bitcoin Verde ha florecido convertiéndose en una gran parte de nuestras vidas y mayor de lo que podríamos haber predecido.</p>
+            <p>Somos Bitcoin Verde y en esta propuesta hemos resumido un poco acerca de nosotros y de lo que nos gustaría hacer con nuestra implementación. En los párrafos siguientes, detallaremos las características más prominentes identificadas como necesarias para continuar nuestro camino de desarrollo y alcanzar nuestras metas. Esperamos continuar apoyando la red como una implementación de nodo completo y, posteriormente, ofrecer Bitcoin Verde como una opción viable para los mineros.</p>
+          </header>
+
+          <!-- Campaign donation form -->
+          <fieldset id="donateField" class="row fullfilled">
+            <div id="donateStatus" class="col s12 m12 l12" style="text-align: center;" data-string="statusFullfilled">La campaña ha sido financiada.</div>
+
+            <div id="donateForm" class="col s12 m12 l12 hidden">
+              <div class="input-field col s1 m1 l1" style="padding: 0;">
+                <i style="display: inline-block; width: 3rem; height: 3rem; text-align: center; opacity: 0.50; font-size: 2.25rem; line-height: 3.25rem;" class="icon-attach_money"></i>
+              </div>
+              <div class="input-field col s11 m5 l6" style="padding: 0; text-align: center;">
+                <input type="range" min="0.80" max="100" value="0" step="0.20" class="slider" id="donationSlider" style="height: 3rem; padding: 0; width: calc(100% - 2rem); margin: 0rem;">
+              </div>
+              <div class="input-field col s12 m6 l5" style="padding: 0 0.75rem; margin: 0.75rem 0rem;">
+                <button id="donateButton" class="btn waves-effect waves-light green" style="width: 100%; padding: 0; margin: 0rem;" disabled="">
+                  <span id="donateText" data-string="donateText">Promete</span>
+                  <span id="donationAmount" data-satoshis="0">0 BCH (0.00 EUR)</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="donateSection" class="hidden col s12 m12">
+              <div class="col" style="background-color: white; border-radius: 0.25rem; border: 1px solid rgba(0, 0, 0, 0.31); padding-bottom: 1.5rem; padding-top: 0.75rem;">
+                <div class="col s12 m12 l12" style="margin-top: 0.75rem;">
+                  <div class="row" style="display: flex; flex-direction: column; justify-content: center; height: 10.50rem; padding: 1rem; margin: 0rem; margin-top: 0.5rem; border: 1px solid rgb(169, 169, 169); box-shadow: inset 0rem 0.10rem 0.25rem rgba(0, 0, 0, 0.13);">
+                    <div class="input-field col s12 m12 l12" style="">
+                      <i style="opacity: 0.50; font-size: 2.25rem; line-height: 2.25rem;" class="icon-person_outline prefix"></i>
+                      <input id="contributionName" type="text" maxlength="24">
+                      <label for="contributionName" data-string="usernameLabel">Nombre (opcional)</label>
+                    </div>
+
+                    <div class="input-field col s12 m12 l12" style="">
+                      <i style="opacity: 0.50; font-size: 2.00rem; line-height: 2.50rem;" class="icon-chat_bubble_outline prefix"></i>
+                      <input id="contributionComment" type="text" maxlength="120">
+                      <label for="contributionComment" data-string="commentLabel">Commentario (opcional)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col s12 m12 l3" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="copyLabel">1. Copiar detalles</small>
+                  <textarea rows="5" id="template" name="template" style="height: 7rem; font-family: monospace; font-size: small; margin: 0; margin-top: 0.5rem; padding: 1rem; background-color: white;">ewAiAG8AdQB0AHAAdQB0AHMAIgA6AFsAewAiAHYAYQBsAHUAZQAiADoAMgA0ADEAMAAwADAAMAAwADAAMAAwACwAIgBhAGQAZAByAGUAcwBzACIAOgAiAGIAaQB0AGMAbwBpAG4AYwBhAHMAaAA6AHEAcQB6AGsAawAwADYAdwA0AGsAMwB5AGUAMAA1AHEANwBmAGwAeQA1ADYANgB0AGEAbgAyAGMAaABmAGsAZQByAHEAZwBrAHUANQA2ADkAegBnACIAfQBdACwAIgBkAGEAdABhACIAOgB7ACIAYQBsAGkAYQBzACIAOgAiACIALAAiAGMAbwBtAG0AZQBuAHQAIgA6ACIAIgB9ACwAIgBkAG8AbgBhAHQAaQBvAG4AIgA6AHsAIgBhAG0AbwB1AG4AdAAiADoAMAB9ACwAIgBlAHgAcABpAHIAZQBzACIAOgAxADUAOAA4ADkAOAAyADMAOQA5AH0A</textarea>
+                  <button id="copyTemplateButton" class="btn waves-effect waves-light green" style="width: 100%;" data-string="copyButton">Copiar detalles</button>
+                </div>
+                <div class="col s12 m12 l6" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="instructionsLabel">2. Preparar promesa</small>
+                  <p id="instructions" style="display: flex; justify-content: center; align-items: center; text-align: center; font-size: small; height: 7rem; padding: 1rem; margin-bottom: 7px; margin-top: 0.5rem; border: 1px solid rgb(169, 169, 169);" data-string="instructions">Instala el plugin para la cartera desktop Electron-Cash y usa la pestaña flipstarter para preparar tu promesa.</p>
+                  <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                    <a id="downloadButton" class="btn" style="display: flex; align-items: center; justify-content: flex-start; background-color: transparent; color: black; box-shadow: none;" href="https://gitlab.com/flipstarter/flipstarter-electron-cash/uploads/a34641f9863164e82a6ab72314a02311/flipstarter-1.2.zip">
+                      <i class="icon-download"></i>
+                      <span style="margin-left: 0.25rem;" data-string="downloadText">Descargar</span>
+                    </a>
+                    <a id="linkInstructionsButton" class="btn" target="_blank" style="display: flex; align-items: center; justify-content: flex-start; background-color: transparent; color: black; box-shadow: none;" href="https://read.cash/@flipstarter/how-to-support-a-flipstarter-campaign-f27240d9">
+                      <i class="icon-info"></i>
+                      <span style="margin-left: 0.25rem;" data-string="instructionLink">Instrucciones</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col s12 m12 l3" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="commitLabel">3. Pegar promesa</small>
+                  <textarea rows="5" id="commitment" name="commitment" data-placeholder="PasteHere" style="height: 7rem; font-family: monospace; font-size: small; margin: 0; margin-top: 0.5rem; padding: 1rem; background-color: white;" placeholder="Pegar aquí"></textarea>
+                  <button id="commitTransaction" class="btn waves-effect waves-light green" style="width: 100%;" disabled="disabled" data-string="commitButton">Enviar promesa</button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Campaign details. -->
+          <section id="campaignDetails" class="row"><h2 id="quiénes-somos">Quiénes somos</h2>
+            <p>Bitcoin Verde es una implementación de nodo completo BCH fundada por Josh Green, propietario de Software Verde. Software Verde es un grupo de desarrolladores de software full-stack basados en Columbus, Ohio. El grupo está dedicado al desarrollo de tecnología al servicio de nuestra comunidad, clientes y amigos. Tenemos afinidad por el software open source y, en general, somos todos entusiastas de la tecnología desde siempre. Nuestro equipo está compuesto principalmente por Josh Green, Andrew Groot, Eliot Lesar y John Jamiel.</p>
+            <p>Comenzamos nuestro viaje para la creación de Bitcoin Verde a fines del 2017, justo unos meses después del hard-fork de BCH. Con deseos de contribuir, decidimos aprender haciendo. Un tanto inseguro de por dónde comenzar, Josh se dio cuenta de que la mayoría de las implementaciones eran versiones provenientes del mismo cliente de referencia: Bitcoin (Core). Decidimos entonces que la mejor manera de contribuir, al tiempo que aprendíamos todos los detalles, era con una construcción desde la base. Uniéndose al ecosistema en enero de 2019, Bitcoin Verde siempre ha tenido objetivo principal proporcionar diversidad a la red BCH. Creemos que hemos logrado ese objetivo a través del lanzamiento de nuestra implementación indexada de nodo completo en Java.</p>
+            <p>Desde el comienzo hemos trabajado con varios grupos, sean tecnólogos o no, para contribuir con la comunidad de todos los modos que nos fuera posible. Participar en innumerables debates, educar a los gobiernos locales, asociarnos con Bitcoin Unlimited para crear una especificación de BCH descriptiva y continuar mejorando nuestra implementación son aspectos destacados de nuestro trabajo del que estamos orgullosos. Hemos trabajado arduamente durante los últimos años para asegurarnos de que nuestro producto sea significativo y valioso para la comunidad. Actualmente, Bitcoin Verde proporciona a la red una implementación de nodo completo, un explorador de bloques y una librería de desarrollo. Nuestras ambiciones para el futuro son continuar realizando mejoras en nuestra implementación y eventualmente proporcionar módulos para carteras y pools de minería.</p>
+            <h2 id="nuestro-objetivo">Nuestro Objetivo</h2>
+            <p>Nuestro objetivo para esta campaña es generar suficiente interés y apoyo como para financiar la hoja de ruta de nuestro desarrollo actual. A la fecha, Bitcoin Verde tiene cuatro funcionalidades principales identificadas. Creemos que las mismas serán necesarias para continuar operando como una opción competitiva y viable para los operadores de BCH, ya sean nodos completos o mineros. Estas cuatro características incluyen:</p>
+            <ul>
+              <li>Crear un Módulo Non-Indexing</li>
+              <li>Crear un servicio de validación de Block Template</li>
+              <li>Implementar la configuración de Testnet</li>
+              <li>Modificar el explorador de Bitcoin Verde para soportar Memo</li>
+            </ul>
+            <h2 id="el-trabajo">El Trabajo</h2>
+            <h3 id="creación-de-módulo-non-indexing">Creación de Módulo Non-Indexing</h3>
+            <p>Actualmente, Bitcoin Verde indexa gran parte del Blockchain. Algunos de estos componentes indexados incluyen (entre otros):</p>
+            <ul>
+              <li>todas las transacciones.</li>
+              <li>todas las salidas y entradas (gastadas y no gastadas).</li>
+              <li>direcciones P2PK/P2SH.</li>
+              <li>tokens SLP.</li>
+              <li>validación SLP.</li>
+              <li>bloques contenciosos/huérfanos.</li>
+            </ul>
+            <p>A pesar de ser muy útiles para los exploradores y los servicios de cartera, estos index proporcionan muchos inconvenientes para los servicios de validación y no tienen un valor real para los nodos de minería. La creación de un módulo non-indexing para Bitcoin Verde proporcionará varios beneficios que contribuirán en última instancia a los objetivos de nuestro equipo para convertirse en un módulo viable para minería. Los beneficios de esta adición incluyen:</p>
+            <ul>
+              <li>Reducción del tiempo de descarga inicial de bloques.</li>
+              <li>Permite que los pools de minería comiencen a correr un nodo Bitcoin Verde en un período de tiempo más razonable.</li>
+              <li>Reducción de los recursos mínimos necesarios.</li>
+              <li>Reduce las barreras de entrada tanto para los mineros como para los operadores de nodos no indexados.</li>
+              <li>Permite a los operadores de pools ejecutar nodos redundantes/de-respaldo para su pool a un costo menor.</li>
+              <li>Reducción del costo general de infraestructura para ejecutar un nodo Bitcoin Verde.</li>
+            </ul>
+            <p><strong>La Solución</strong></p>
+            <p>Con cacheBlocks, los bloques se almacenan serializados en disco. Muchas de las tablas SQL relacionadas a transacciones, direcciones y slp serán removidas.</p>
+            <ul>
+              <li>Se creará una nueva tabla de transacciones con columnas que pueden ser utilizadas para apuntar a la ubicación en disco donde está almacenado el bloque de la transacción, y un offset de dónde se encuentra la transacción dentro del archivo de bloque.</li>
+              <li>Esto migra las transacciones minadas de la base de datos (que está indexada y normalizada, que es ineficiente en espacio y con menor rendimiento) a un formato más compacto en un archivo plano.</li>
+              <li>Para mantener la lógica de mempool/transacciones no confirmadas coherente entre los módulos, las antiguas tablas de transaction_* serán renombradas y reutilizadas para transacciones no confirmadas.</li>
+              <li>Tener transacciones no confirmadas indexadas y normalizadas nos permite mantener un límite infinito de transacciones encadenadas sin ningún desarrollo adicional.</li>
+              <li>A medida que las transacciones son minadas en un bloque, son eliminadas de la tabla unconfirmed_transactions_* y solo son almacenadas en archivos de bloque.</li>
+              <li>Dado que las tablas SQL de transacciones no serán grandes, solo la indexación de transacciones no confirmadas es lo que aumenta nominalmente la impronta en disco del nodo, al tiempo que permite la extensibilidad de características futuras así como de decisiones complejas a ser tomadas en relación a la inclusión de transacciones no confirmadas en el siguiente bloque.</li>
+              <li>El tamaño total de la transacción y el monto de la tasa serán agregadas a la tabla de transacciones para mejorar la generación del template de bloque.</li>
+            </ul>
+            <p>Los cambios afectarán principalmente a la capa de datos, que está encapsulada por el TransactionDatabaseManager y las clases relacionadas. La lógica de validación y la lógica de red pueden verse mínimamente afectadas. Muchos de los tests existentes dependen de la manipulación directa de los datos de la base de datos para su configuración.</p>
+            <p>Con un esquema diferente, estos tests fallarán al ser ejecutados con los cambios de esquema para este módulo. Estos cambios de esquema no harán que el conjunto de tests original falle, ya que el conjunto de tests cargan el esquema de indexación de forma predeterminada. Sin embargo, con esta configuración, muchos de los tests no serán ejecutados contra el nuevo esquema, lo que provocará una brecha bastante grande en la cobertura de tests para funcionalidades críticas.</p>
+            <ul>
+              <li>Esta propuesta incluye la extensión de los tests existentes para incluir la cobertura del esquema de no indexación, así como el esquema de indexación.</li>
+            </ul>
+            <p><strong>Metas, Entregables y Complejidad Estimada</strong></p>
+            <p>Hemos estimado que este trabajo tomará aproximadamente <strong>180 horas</strong> de tiempo de desarrollo para ser completado. Nuestra solución se puede dividir en <strong>3 metas principales</strong> , cada una con diferentes grados de complejidad. Proponemos asignar fondos de forma proporcional a la complejidad y al tiempo estimado para el desarrollo necesario, con los fondos recibidos al alcanzar cada meta.</p>
+            <ol>
+              <li><p>Esquema de refactorización de SQL y migraciones de data-layer. <strong>80/180 horas (45%)</strong></p>
+                <p>La primera meta consistirá en el esquema SQL y los cambios lógicos discutidos en la descripción general de la solución. Esta meta se considera completa una vez que las tablas sean eliminadas y el nodo complete con éxito su descarga de bloques inicial en main-net.</p>
+              </li>
+              <li><p>Actualización de tests para nuevo data-layer. <strong>60/180 horas (33%)</strong></p>
+                <p>La segunda meta consiste en actualizar todas los tests fallidos para garantizar que se aprueben los tests de regresión existentes. Además, incluye la expansión del conjunto de tests existente para que se ejecuten tanto en esquemas de indexación como de no indexación.</p>
+              </li>
+              <li><p>Tests de la red principal por un mes ejecutados a través del block template aggregator. <strong>40/180 horas (22%)</strong></p>
+                <p>La tercera meta será alcanzada después de que el nodo se sincronice con la red principal y su template de bloque se considere compatible con los nodos Bitcoin ABC y Bitcoin Unlimited.</p>
+                <p>La finalización de esta meta requiere que el nodo sea actualizado para el nuevo conjunto de reglas sigops incluido en la actualización 2020-05, y requiere que se complete el block template aggregator para que el block template generado por Bitcoin Verde pueda ser validado automáticamente por otras implementaciones de nodo. Después de un mes de crear templates de bloque en red principal sin incompatibilidades, la meta se considerará alcanzada.</p>
+              </li>
+            </ol>
+            <h3 id="servicio-de-validación-de-template-de-bloque">Servicio de Validación de Template de Bloque</h3>
+            <p>Existe el riesgo de que bloques extraídos por mineros puedan causar una división de la cadena o quedar huérfanos debido a que son incompatibles entre las implementaciones de nodos. Desde la perspectiva de un minero, incluso un pequeño riesgo asociado con estas incompatibilidades puede tener un gran impacto en la rentabilidad. Este riesgo de incompatibilidad aumenta el incentivo para que los mineros y los pools ejecuten la misma implementación, lo que reduce en gran medida la diversidad de nodos entre los mineros.</p>
+            <p>Este servicio de validación de template de bloque (TVS) tiene como objetivo reducir el riesgo de que los mineros creen un bloque no válido a casi cero al validar el template de bloque frente a otras implementaciones antes de realizar cualquier trabajo en el template de bloque. Los beneficios de completar este trabajo incluyen:</p>
+            <ul>
+              <li>Reducir el riesgo de minar involuntariamente un bloque que causaría una división de red.</li>
+              <li>Reducir el riesgo financiero para los mineros de ejecutar diferentes implementaciones de nodos.</li>
+              <li>Aumentar la confianza del minero en la diversidad de nodos.</li>
+              <li>Alertar a los desarrolladores de posibles bloques incompatibles.</li>
+            </ul>
+            <p><strong>La Solución</strong></p>
+            <p>Crear un servicio que esté conectado a la última versión de implementaciones de múltiples nodos ("nodos de validación"):</p>
+            <ul>
+              <li>BCHD</li>
+              <li>Bitcoin ABC</li>
+              <li>Bitcoin Unlimited</li>
+              <li>Bitcoin Verde</li>
+              <li>Flowee The Hub</li>
+            </ul>
+            <p>Este servicio debe aceptar un template de bloque estándar de getblocktemplate como se especifica en BIP-22, BIP-23, BIP-9 y BIP-145.</p>
+            <p>Una vez que el template de bloque es recibido, el servicio garantiza que cada nodo de validación haya visto cada transacción dentro del template de bloque.</p>
+            <ul>
+              <li>Luego el servicio intentará validar el template de bloque para cada implementación.</li>
+              <li>Luego el servicio responderá al solicitante si algún nodo encuentra que el template no es válido.</li>
+            </ul>
+            <p>El servicio hará un esfuerzo mayor por determinar que transacción(es) dispararó el estado inválido para el template de bloque con la intención de que el solictante pueda optar por omitirlas.</p>
+            <p>Los nodos de validación pueden no estar equipados para validar un template de bloque. Esta solución procederá:</p>
+            <ul>
+              <li>Definir un BIP formal para extender el getblocktemplate y permitir que su modo de propuesta permita la existencia de un indicador para ignorar la validación de prueba de trabajo para los datos del bloque.</li>
+              <li>Crear una implementación de referencia y un pull request para que Bitcoin ABC cumpla con la extensión anterior de getblocktemplate.</li>
+              <li>Proporcionando una implementación para Bitcoin ABC debido a su actual mayor porción de mercado.</li>
+              <li>Si otras implementaciones proporcionan una funcionalidad similar sin usar directamente getblocktemplate, entonces este problema puede ser luego extendido para crear compatibilidad con esas implementaciones.</li>
+            </ul>
+            <p>Bitcoin Verde actualmente no admite el modo propuesto por getblocktemplate. Este issue va a modificar la funcionalidad actual equivalente para que coincida con la API getblocktemplate RPC, incluyendo el modo de propuesta.</p>
+            <p><strong>Metas y Entregables Estimados</strong></p>
+            <p>Hemos estimado que esta adición tomará aproximadamente <strong>160 horas</strong> de tiempo de desarrollo para completarla. Nuestra solución se puede dividir en <strong>4 metas principales</strong>, cada una con diferentes grados de complejidad. Proponemos asignar fondos de forma proporcional a la complejidad y al tiempo estimado para el desarrollo necesario, con los fondos recibidos al cumplir cada meta.</p>
+            <ol>
+              <li>Definir la API de servicio para validar el template de bloque. <strong>30/160 horas (18.75%)</strong></li>
+              <li>Invocar múltiples llamadas RPC getblocktemplate:proposal a los nodos conectados para validar el template de bloque y devolver el estado de validación. <strong>30/160 horas (18.75%)</strong></li>
+              <li>Crear un BIP formal para ampliar la funcionalidad existente de getblocktemplate:proposal. Y la implementación de referencia para Bitcoin ABC. <strong>60/160 horas (37.5%)</strong></li>
+              <li>Modificar Bitcoin Verde para cumplir con el BIP propuesto. <strong>40/160 horas (25%)</strong></li>
+            </ol>
+            <h3 id="implementar-configuración-de-testnet">Implementar Configuración de Testnet</h3>
+            <p>Actualmente, Bitcoin Verde solo permite conexiones al mainnet. Si bien, históricamente las pruebas de casos extremos han sido realizadas en gran medida a través de unit tests usando vectores de prueba públicos. Existen tests de integración adicionales de los que Bitcoin Verde podría beneficiarse al conectarse al testnet, particularmente en el tiempo previo a los hard-forks en donde el testnet es usado de forma masiva.</p>
+            <p>Conectarse al testnet también puede proporcionar una forma para que la perspectiva única de Bitcoin Verde de realizar tests de Bitcoin Cash beneficie a otras implementaciones de nodos en caso de que las muchas diferencias entre Bitcoin Verde y esas implementaciones puedan conducir a diferentes tipos de transacciones de test.</p>
+            <p>Una de las razones clave por las que esto aún no está implementado es que el testnet tiene una serie de diferencias en términos de cómo se transmiten, validan y extraen las transacciones y los bloques. Por tal motivo, todas estas diferencias deberán implementarse como opcionales en función de un nuevo campo de configuración.</p>
+            <p>Esta solución proporcionará:</p>
+            <ul>
+              <li>Un modo adicional de test que debería proporcionar beneficios en relación a  los modos actuales.</li>
+              <li>Mayor exposición a transacciones de casos límite que sean menos prohibitivas en testnet.</li>
+              <li>Coordinación mejorada con otras implementaciones de nodos para tests de hard-fork.</li>
+            </ul>
+            <p><strong>La Solución</strong></p>
+            <p>Si bien Bitcoin Verde actualmente no fuerza la estandarización de las transacciones, algunas medidas deben ser tomadas para garantizar que, si Bitcoin Verde comenzara a hacerlo esa opción estará desactivada por defecto al conectarse al testnet.</p>
+            <p>Para operar con testnet, se requerirán las siguientes actualizaciones:</p>
+            <ul>
+              <li>Números de puerto alternativos, magic number y seeds DNS.</li>
+              <li>Número de dirección y prefijo.</li>
+              <li>Bloque de génesis diferente.</li>
+              <li>Reglas adicionales de ajuste de dificultad.</li>
+            </ul>
+            <p><strong>Metas y Entregables Estimados</strong></p>
+            <p>Hemos estimado que esta adición tomará aproximadamente <strong>60 horas</strong> de tiempo de desarrollo para completarla. Nuestra solución se puede dividir en <strong>2 metas principales</strong>, cada una con diferentes grados de complejidad. Proponemos asignar fondos de forma proporcional a la complejidad y al tiempo estimado para el desarrollo necesario, con los fondos recibidos al cumplir cada meta.</p>
+            <ol>
+              <li><p>Actualizar componentes con diferentes contenidos estáticos. <strong>20/60 horas (33%)</strong></p>
+                <p>La primera meta consiste en los cambios necesarios únicamente para la comunicación con el testnet de BCH. Esto incluye números de puerto, cualquier cosa que afecte el contenido del mensaje de protocolo e información sobre el bloque de génesis. Esta meta se considerará completa una vez que todos los componentes hayan sido actualizados y publicados.</p>
+              </li>
+              <li><p>Asegurarde de que una sincronización completa es posible.  <strong>40/60 horas (67%)</strong></p>
+                <p>La segunda meta de esta adición requerirá que actualicemos las reglas de validación de transacciones y bloques para garantizar que Bitcoin Verde acepta el contenido y es ahora capaz de solicitarlo y recibirlo. Solo cuando se haya confirmado la sincronización completa, esta meta será marcada como completa.</p>
+              </li>
+            </ol>
+            <h3 id="modificar-el-explorador-de-bitcoin-verde">Modificar el Explorador de Bitcoin Verde</h3>
+            <p>El nodo y el explorador de Bitcoin Verde actualmente no soportan Memo. Tanto los usuarios finales como los desarrolladores dependen de los exploradores de bloque para validar sus acciones en blockchain.</p>
+            <p>El soporte que nuestro explorador ofrece actualmente se considera como mínimo, lo que disuade a los usuarios de utilizarlo en todo su potencial. Soportar las acciones de SLP y Memo proporcionará redundancia viable para otros exploradores de bloque, e incrementará la selección de plataforma por usuarios corriendo su propio explorador de bloques.</p>
+            <p>Estas características adicionales permitirán a otros desarrolladores revisar fácilmente lo que Bitcoin Verde considera com válido. Esto es especialmente valioso para aplicaciones del tipo OP_RETURN, ya que su estado no es inherentemente validado por los mineros.</p>
+            <p>Como resultado, esta modificación permitirá:</p>
+            <ul>
+              <li>Atraer usuarios del protocolo Memo al explorador de Bitcoin Verde.</li>
+              <li>Permitir que otros desarrolladores validen facilmente sus transacciones basadas en OP_RETURN para certificar implementaciones y consenso.</li>
+              <li>Mantener el soporte para el formato de dirección legacy al tiempo que se agrega soporte para CashAddr.</li>
+            </ul>
+            <p><strong>La Solución</strong></p>
+            <p>Adicionar soporte a Memo</p>
+            <ul>
+              <li>Bitcoin Verde será extendido para procesar las transacciones del protocolo Memo.</li>
+              <li>Las transacciones Memo serán indexadas por el nodo.</li>
+              <li>Se implementará una rutina para back-port de los index de los nodos actualmente sincronizados.</li>
+              <li>Las llamadas RPC serán actualizadas para incluir datos Memo, similar a la funcionalidad proporcionada para SLP.</li>
+              <li>La API del explorador será actualizado para incluir datos Memo de transacción.</li>
+              <li>El explorador mostrará datos Memo tabulados, similares a bitcoin.com.</li>
+            </ul>
+            <p><strong>Metas y Entregables Estimados</strong></p>
+            <p>Hemos estimado que estas modificaciones tomarán aproximadamente <strong>56 horas</strong> de tiempo de desarrollo para completarla. Esta modificación puede ser dividida en <strong>2 metas principales</strong>, cada una con diferentes grados de complejidad. Proponemos asignar fondos de forma proporcional a la complejidad y al tiempo estimado para el desarrollo necesario, con los fondos recibidos al finalizar cada meta.</p>
+            <ol>
+              <li><p>Soporte de Bitcoin Verde (Nodo) a Memo  <strong>40/56 horas (71.5%)</strong></p>
+                <p>La primera meta consistirá en todos los cambios sobre el nodo que son necesarios para admitir el protocolo Memo, incluidas las llamadas RPC. Esta meta excluye todo el soporte a Memo desde el explorador.</p>
+              </li>
+              <li><p>Soporte del explorador Bitcoin Verde (Node) a Memo <strong>16/56 horas (28.5%)</strong></p>
+                <p>La segunda meta consistirá en todos los cambios requeridos en el explorador para soportar el protocolo Memo.</p>
+              </li>
+            </ol>
+            <h2 id="financiamiento-solicitado">Financiamiento Solicitado</h2>
+            <p>En total, según nuestras estimaciones, el próximo ciclo de desarrollo de Bitcoin Verde requerirá aproximadamente 456 horas considerando 3 de nuestros ingenieros y 1 escritor técnico. A una tasa de 0.6 BCH/h, el financiamiento total solicitado para esta propuesta sería de 273.6 BCH. Sin embargo, antes de la creación de esta campaña de financiación, Josh Green había escrito propuestas de financiación para cada función, registradas como issues individuales en GitHub.</p>
+            <p>Habiendo ya recaudado fondos (24.838 BCH) con la intención de apoyar este ciclo de desarrollo, sería irresponsable no deducir esas contribuciones ya realizadas de sus respectivos entregables. Luego de ajustar las contribuciones ya recibidas, el total de fondos restantes solicitados para este ciclo es de <strong>241.162 BCH</strong> o aproximadamente <strong>$ 62000</strong>, en donde los fondos son divididos en 4 entregables que completan las 11 metas propuestas.</p>
+            <h2 id="agradecimento">Agradecimento</h2>
+            <p>La realización de este proyecto no es un esfuerzo pequeño. Es debido a la continua generosidad y al apoyo de nuestra comunidad que podemos continuar nuestras operaciones hoy en día. Apreciamos cada oportunidad que la red y todos los contribuyentes nos han brindado. Esperamos continuar nuestra participación en la comunidad BCH y ayudar en la maduración de nuestra red.</p>
+          </section>
+        </article>
+
+        <!-- Campaign sidebar -->
+        <aside class="col s12 m12 l4">
+          <section>
+            <h3 style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-face"></i>
+                <b id="campaignRecipientCount">1</b>
+                <span data-string="recipientsLabel">destinatarios</span>
+              </span>
+            </h3>
+            <hr>
+            <ul id="recipientList" class="row" style="margin-bottom: 3rem;"><li class="col s6 m6 l12">
+              <a href="https://bitcoinverde.org/">
+                <img src="img/verde-logo.png" alt="Bitcoin Verde">
+                <span>
+                  <b>Bitcoin Verde</b>
+                  <i>241 BCH</i>
+                </span>
+              </a>
+            </li></ul>
+          </section>
+
+          <section>
+            <h3 style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-favorite_border"></i>
+                <b id="campaignContributorCount">29</b>
+                <span data-string="contributorsLabel">contribuidores</span>
+              </span>
+            </h3>
+            <hr>
+            <ul id="contributionList"><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -10.65s; background-position: 0px 1.35rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">64%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Marc De Mesel</b>
+                  <small class="contributionAmount">154.88 BCH</small>
+                </span>
+                <q class="contributionComment">Thank you Bitcoin Verde for keeping Bitcoin Cash decentralized and adding value</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -2.78s; background-position: 0px 3.02rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">16%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Marc De Mesel</b>
+                  <small class="contributionAmount">39.74 BCH</small>
+                </span>
+                <q class="contributionComment">Want To See You Succeed</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.92s; background-position: 0px 3.38rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">6%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">btcfork</b>
+                  <small class="contributionAmount">15.25 BCH</small>
+                </span>
+                <q class="contributionComment">I really like this project and what they are doing for Bitcoin Cash. Healthy protocol, diversity of clients.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -0.6s; background-position: 0px 3.44rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">5%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">molecular</b>
+                  <small class="contributionAmount">11.09 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11.14s; background-position: 0px 3.45rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">4%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">atomic</b>
+                  <small class="contributionAmount">10.03 BCH</small>
+                </span>
+                <q class="contributionComment">Block Template Validation Service is an amazing idea!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.05s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">satoshis mom</b>
+                  <small class="contributionAmount">1.72 BCH</small>
+                </span>
+                <q class="contributionComment">not making my son learn java was a mistake</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -8.68s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Henry Cashlitt</b>
+                  <small class="contributionAmount">1.52 BCH</small>
+                </span>
+                <q class="contributionComment">Bitcoin Cash (BCH): 💰⚡️ Upgraded money for the world</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11.62s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Sur_Clyde_Hoffenfelder</b>
+                  <small class="contributionAmount">1.30 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -2.64s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">emergent_reasons#100</b>
+                  <small class="contributionAmount">0.51 BCH</small>
+                </span>
+                <q class="contributionComment">FYI Large pledges will allow more people to participate by reducing the minimum.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -14.71s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Why cryptocurrencies?</b>
+                  <small class="contributionAmount">0.51 BCH</small>
+                </span>
+                <q class="contributionComment">https://whycryptocurrencies.com/</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -1.34s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Ant-n</b>
+                  <small class="contributionAmount">0.46 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -2.26s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">thanks for the work!</b>
+                  <small class="contributionAmount">0.41 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.31s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Amora</b>
+                  <small class="contributionAmount">0.41 BCH</small>
+                </span>
+                <q class="contributionComment">BCH for the win!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.62s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Anonymous</b>
+                  <small class="contributionAmount">0.41 BCH</small>
+                </span>
+                <q class="contributionComment">Thanks</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.91s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Omar</b>
+                  <small class="contributionAmount">0.40 BCH</small>
+                </span>
+                <q class="contributionComment">Bitcoin Cash (BCH): best money for the world! Thank you all BCH developers for your hard work. </q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -10.71s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Sur_Clyde_Hoffenfelder</b>
+                  <small class="contributionAmount">0.37 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -9.62s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">BitcoinOutLoud</b>
+                  <small class="contributionAmount">0.32 BCH</small>
+                </span>
+                <q class="contributionComment">Node diversity FTW!!!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -14.24s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.25 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.05s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Eric Reid</b>
+                  <small class="contributionAmount">0.20 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -7.02s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">spice_trader#44148</b>
+                  <small class="contributionAmount">0.19 BCH</small>
+                </span>
+                <q class="contributionComment">Keep up the stellar work!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -8.93s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Kyle Benzle</b>
+                  <small class="contributionAmount">0.14 BCH</small>
+                </span>
+                <q class="contributionComment">Kick Amury out of Bitcoin.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.34s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Jonathan Silverblood</b>
+                  <small class="contributionAmount">0.13 BCH</small>
+                </span>
+                <q class="contributionComment">It might not be much, but I hope the thought counts.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.37s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Lopokoko</b>
+                  <small class="contributionAmount">0.12 BCH</small>
+                </span>
+                <q class="contributionComment">P2P Electronic Cash for the world! </q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -8.65s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.11 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.13s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Collin</b>
+                  <small class="contributionAmount">0.11 BCH</small>
+                </span>
+                <q class="contributionComment">Dat green tho</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.1s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">TPB_Julian</b>
+                  <small class="contributionAmount">0.11 BCH</small>
+                </span>
+                <q class="contributionComment">Let's get those cacheBlocks</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.72s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.11 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -14.86s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">n00b</b>
+                  <small class="contributionAmount">0.10 BCH</small>
+                </span>
+                <q class="contributionComment">all my booze money for May</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.11s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.10 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li></ul>
+          </section>
+        </aside>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Site footer -->
+  <footer class="page-footer green">
+    <div class="container">
+      <div class="row">
+        <div class="col l5 s12">
+          <h5 class="white-text" data-string="footerLabel">Nosotros</h5>
+          <p class="grey-text text-lighten-4" data-string="footerText">Somos un grupo de voluntarios que creemos en la importancia de establecer métodos de financiación voluntaria efectivos y sostenibles. Flipstarter es un ejemplo de cómo recaudar fondos sin custodia y con mínima confianza involucrada.</p>
+        </div>
+        <div class="col l2 m4 s4 offset-l1">
+          <h5 class="white-text" data-string="socialLabel">Social</h5>
+          <ul>
+            <li>
+              <a class="white-text valign-wrapper" href="https://twitter.com/flipstartercash">
+                <i class="icon-chat"></i>
+                &nbsp;
+                <span data-string="twitter">Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a class="white-text valign-wrapper" href="https://read.cash/@flipstarter">
+                <i class="icon-info"></i>
+                &nbsp;
+                <span data-string="read.cash">Read.cash</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l2 m4 s4">
+          <h5 class="white-text" data-string="contactLabel">Contacto</h5>
+          <ul>
+            <li>
+              <a class="white-text valign-wrapper" href="mailto:info@flipstarter.cash">
+                <i class="icon-email"></i>
+                &nbsp;
+                <span data-string="email">Email</span>
+              </a>
+            </li>
+            <li>
+              <a class="white-text valign-wrapper" href="mailto:security@flipstarter.cash">
+                <i class="icon-security"></i>
+                &nbsp;
+                <span data-string="security">Securidad</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l2 m4 s4">
+          <h5 class="white-text" data-string="codeLabel">Código</h5>
+          <ul>
+            <li>
+              <a class="white-text valign-wrapper" href="https://gitlab.com/groups/flipstarter/-/issues">
+                <i class="icon-report_problem"></i>
+                &nbsp;
+                <span data-string="issues">Problemas</span>
+              </a>
+            </li>
+            <li>
+              <a class="white-text valign-wrapper" href="https://gitlab.com/flipstarter">
+                <i class="icon-code"></i>
+                &nbsp;
+                <span data-string="source">Codigo fuente</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center" style="opacity: 0.65;">
+        <span data-string="copyright">El sitio web y los activos cuentan con derechos de autor por los respectivos autores en 2020, con licenciados para uso público bajo la</span>
+        <a href="https://gitlab.com/emergent-reasons/funding-traction/blob/master/LICENSE" style="color: inherit; border-bottom: 1px dashed rgba(256, 256, 256, 0.33)" data-string="license">licencia MIT.</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="languageSelector" class="fixed-action-btn">
+    <b id="currentLanguage" data-string="changeLanguage">
+      <a href="/">🇬🇧</a>
+      <a href="/zh">🇨🇳</a>
+      <a href="/es">🇪🇸</a>
+    </b>
+  </div>
+
+  <!-- -->
+  <template id="recipientTemplate">
+    <li class="col s6 m6 l12">
+      <a>
+        <img>
+        <span>
+          <b></b>
+          <i></i>
+        </span>
+      </a>
+    </li>
+  </template>
+  <template id="contributionTemplate">
+    <li>
+      <div>
+        <div class="contributionWaves"></div>
+        <div class="contributionDisplay"></div>
+        <span class="contributionPercent"></span>
+      </div>
+      <span>
+        <span>
+          <b class="contributionAlias"></b>
+          <small class="contributionAmount"></small>
+        </span>
+        <q class="contributionComment"></q>
+      </span>
+    </li>
+  </template>
+  <template id="emptyContributionMessage">
+    <li style="display: block; text-align: center; color: rgba(0, 0, 0, 0.5); padding: 2rem;">
+      <i data-string="contributorEmpty1">Nadie ha hecho una promesa todavía.</i>
+      <br>
+      <i data-string="contributorEmpty2">Puedes ser el primero.</i>
+    </li>
+  </template>
+
+  <!-- Load the javascript as the last step to ensure fastest load time. -->
+  <!-- <script src="js/application.js"></script> -->
+
+  <!-- -->
+  <audio src="snd/applause.mp3" id="applause"></audio>
+
+
+</body></html>

@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="zh"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload assets -->
+  <link rel="preload" href="img/logo.png" as="image">
+  <link rel="preload" href="img/clouds.png" as="image">
+  <link rel="preload" href="img/grass.png" as="image">
+  <link rel="preload" href="img/water.png" as="image">
+  <link rel="preload" href="fonts/cairo.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/icons.woff" as="font" crossorigin="">
+
+  <!-- preload fonts -->
+  <style>
+    /** Fonts **/
+    @font-face
+    {
+      font-display: swap;
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Cairo'), local('Cairo-Regular'), url('fonts/cairo.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face
+    {
+      font-display: swap;
+      font-family: 'icons';
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+      src: url('fonts/icons.woff') format('woff');
+    }
+  </style>
+
+  <!-- -->
+  <link rel="icon" href="img/logo.png">
+
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+
+  <!-- Website metadata -->
+  <title>Verde, Flipstarter</title>
+  <meta property="og:title" content="Flipstarter: Bitcoin Verde">
+  <meta property="og:description" content="Bitcoin Verde flipstarter fundraising campaign.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="verde.flipstarter.cash">
+  <meta property="og:image" content="https://verde.flipstarter.cash/img/verde-logo.png">
+  <meta property="og:image:alt" content="Bitcoin Verde logo image.">
+  <meta property="og:article:section" content="Technology">
+  <meta property="og:article:tag" content="Bitcoin">
+  <meta property="og:article:tag" content="Bitcoin Cash">
+  <meta property="og:article:tag" content="BCH">
+  <meta property="og:article:tag" content="Bitcoin Verde">
+  <meta property="og:article:tag" content="Cryptocurrencies">
+  <meta property="og:article:tag" content="Fundraising">
+  <meta property="og:article:tag" content="Infrastructure">
+</head>
+<body class="clouds">
+  <div class="grass">
+    <div class="background">
+
+      <!-- Site header -->
+      <header id="header" class="container row center">
+        <h1 class="cols s12 m12 l12">
+          <img src="img/logo.png" alt="Flipstarter logotype">
+          <span>Flipstarter</span>
+        </h1>
+        <p class="col s12 m12 l12" data-string="siteIntro">比特币现金的基础设施融资非常重要，基础设施的多样化能让生态更稳定。Flipstarter提供了一种新的项目融资方式，既能激励项目提高可信度，又能公平地对待捐赠人。</p>
+        <ul class="col s10 m10 l10 push-s1 push-m1 push-l1" style="display: flex; justify-content: center; text-align: left;">
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/introducing-flipstarter-31ce86f3">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkWhatIs">什么是Flipstarter?</span>
+            </a>
+          </li>
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/how-to-support-a-flipstarter-campaign-f27240d9">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkHowTo">怎么用Flipstarter?</span>
+            </a>
+          </li>
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/flipstarter-faq-66c56b03">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkFAQ">常见问题。</span>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- Site content -->
+      <main class="container row z-depth-2">
+
+        <!-- Campaign -->
+        <article id="campaign" class="col s12 m12 l8" style="margin-bottom: 0.75rem;">
+          <h1 style="display: none;">Campaign</h1>
+
+          <!-- Campaign overview -->
+          <section id="overview">
+            <h2 style="display: none;">Campaign overview</h2>
+            <div style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-access_time"></i>
+                <span id="timerLabel" data-string="fullfilledLabel">募资</span>
+                <b id="campaignExpiration">3 个月前</b>
+              </span>
+            </div>
+            <div style="float: right;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-bookmark_border"></i>
+                <span id="compaignContributionAmount">241.00</span>
+                <i>/</i>
+                <span id="campaignRequestAmount">241.00</span>
+                <b>BCH</b>
+              </span>
+            </div>
+            <div class="progress">
+              <div class="determinate" id="campaignProgressBar" style="width: 100%;"></div>
+              <div class="determinate" id="campaignContributionBar" style="left: 100%; width: 0%;"></div>
+            </div>
+          </section>
+
+          <!-- Campaign heading -->
+          <header id="campaignAbstract"><p>过去数年，几位希望透过节点多样化去支持BCH的开发工程师一直维持着Bitcoin Verde的营运。我们身为开发工程师，对能够为使用者提供日常生活中实际用处的软件充满热诚。开发和营运Bitcoin Verde由一种学习体验，在超出预期的情况下慢慢蓬勃发展成为我们生活中一大部份。</p>
+            <p>我们是Bitcoin Verde，在这个计划书中我们简要介绍了自己和对实行计划的展望。以下段落中，我们将详细叙述最显着的特点，而这些特点对我们的持续发展及达成目标是必要的。我们希望透过运行全节点，继续支持BCH网络，最终Bitcoin Verde会成为矿工们一个可行的选项。</p>
+          </header>
+
+          <!-- Campaign donation form -->
+          <fieldset id="donateField" class="row fullfilled">
+            <div id="donateStatus" class="col s12 m12 l12" style="text-align: center;" data-string="statusFullfilled">本活动已进行募资。</div>
+
+            <div id="donateForm" class="col s12 m12 l12 hidden">
+              <div class="input-field col s1 m1 l1" style="padding: 0;">
+                <i style="display: inline-block; width: 3rem; height: 3rem; text-align: center; opacity: 0.50; font-size: 2.25rem; line-height: 3.25rem;" class="icon-attach_money"></i>
+              </div>
+              <div class="input-field col s11 m5 l6" style="padding: 0; text-align: center;">
+                <input type="range" min="0.80" max="100" value="0" step="0.20" class="slider" id="donationSlider" style="height: 3rem; padding: 0; width: calc(100% - 2rem); margin: 0rem;">
+              </div>
+              <div class="input-field col s12 m6 l5" style="padding: 0 0.75rem; margin: 0.75rem 0rem;">
+                <button id="donateButton" class="btn waves-effect waves-light green" style="width: 100%; padding: 0; margin: 0rem;" disabled="">
+                  <span id="donateText" data-string="donateText">捐款</span>
+                  <span id="donationAmount" data-satoshis="0">0 BCH (0.00 CNY)</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="donateSection" class="hidden col s12 m12">
+              <div class="col" style="background-color: white; border-radius: 0.25rem; border: 1px solid rgba(0, 0, 0, 0.31); padding-bottom: 1.5rem; padding-top: 0.75rem;">
+                <div class="col s12 m12 l12" style="margin-top: 0.75rem;">
+                  <div class="row" style="display: flex; flex-direction: column; justify-content: center; height: 10.50rem; padding: 1rem; margin: 0rem; margin-top: 0.5rem; border: 1px solid rgb(169, 169, 169); box-shadow: inset 0rem 0.10rem 0.25rem rgba(0, 0, 0, 0.13);">
+                    <div class="input-field col s12 m12 l12" style="">
+                      <i style="opacity: 0.50; font-size: 2.25rem; line-height: 2.25rem;" class="icon-person_outline prefix"></i>
+                      <input id="contributionName" type="text" maxlength="24">
+                      <label for="contributionName" data-string="usernameLabel">姓名(非必选项)</label>
+                    </div>
+
+                    <div class="input-field col s12 m12 l12" style="">
+                      <i style="opacity: 0.50; font-size: 2.00rem; line-height: 2.50rem;" class="icon-chat_bubble_outline prefix"></i>
+                      <input id="contributionComment" type="text" maxlength="120">
+                      <label for="contributionComment" data-string="commentLabel">留言 (非必选项)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col s12 m12 l3" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="copyLabel">1. 复制细节</small>
+                  <textarea rows="5" id="template" name="template" style="height: 7rem; font-family: monospace; font-size: small; margin: 0; margin-top: 0.5rem; padding: 1rem; background-color: white;">ewAiAG8AdQB0AHAAdQB0AHMAIgA6AFsAewAiAHYAYQBsAHUAZQAiADoAMgA0ADEAMAAwADAAMAAwADAAMAAwACwAIgBhAGQAZAByAGUAcwBzACIAOgAiAGIAaQB0AGMAbwBpAG4AYwBhAHMAaAA6AHEAcQB6AGsAawAwADYAdwA0AGsAMwB5AGUAMAA1AHEANwBmAGwAeQA1ADYANgB0AGEAbgAyAGMAaABmAGsAZQByAHEAZwBrAHUANQA2ADkAegBnACIAfQBdACwAIgBkAGEAdABhACIAOgB7ACIAYQBsAGkAYQBzACIAOgAiACIALAAiAGMAbwBtAG0AZQBuAHQAIgA6ACIAIgB9ACwAIgBkAG8AbgBhAHQAaQBvAG4AIgA6AHsAIgBhAG0AbwB1AG4AdAAiADoAMAB9ACwAIgBlAHgAcABpAHIAZQBzACIAOgAxADUAOAA4ADkAOAAyADMAOQA5AH0A</textarea>
+                  <button id="copyTemplateButton" class="btn waves-effect waves-light green" style="width: 100%;" data-string="copyButton">复制细节</button>
+                </div>
+                <div class="col s12 m12 l6" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="instructionsLabel">2. 准备捐款</small>
+                  <p id="instructions" style="display: flex; justify-content: center; align-items: center; text-align: center; font-size: small; height: 7rem; padding: 1rem; margin-bottom: 7px; margin-top: 0.5rem; border: 1px solid rgb(169, 169, 169);" data-string="instructions">请在Electron-Cash桌面钱包安装我们的插件，然后在钱包中Flipstarter标签准备款项。</p>
+                  <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                    <a id="downloadButton" class="btn" style="display: flex; align-items: center; justify-content: flex-start; background-color: transparent; color: black; box-shadow: none;" href="https://gitlab.com/flipstarter/flipstarter-electron-cash/uploads/a34641f9863164e82a6ab72314a02311/flipstarter-1.2.zip">
+                      <i class="icon-download"></i>
+                      <span style="margin-left: 0.25rem;" data-string="downloadText">下载</span>
+                    </a>
+                    <a id="linkInstructionsButton" class="btn" target="_blank" style="display: flex; align-items: center; justify-content: flex-start; background-color: transparent; color: black; box-shadow: none;" href="https://read.cash/@flipstarter/how-to-support-a-flipstarter-campaign-f27240d9">
+                      <i class="icon-info"></i>
+                      <span style="margin-left: 0.25rem;" data-string="instructionLink">指示</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col s12 m12 l3" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="commitLabel">3. 粘贴捐款</small>
+                  <textarea rows="5" id="commitment" name="commitment" data-placeholder="PasteHere" style="height: 7rem; font-family: monospace; font-size: small; margin: 0; margin-top: 0.5rem; padding: 1rem; background-color: white;" placeholder="于此粘贴"></textarea>
+                  <button id="commitTransaction" class="btn waves-effect waves-light green" style="width: 100%;" disabled="disabled" data-string="commitButton">提交捐款</button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Campaign details. -->
+          <section id="campaignDetails" class="row"><h2 id="关于我们">关于我们</h2>
+            <p>Bitcoin Verde是一个BCH全节点软件，由Software Verde的持有者Josh Green成立。Software Verde由一群来自美国俄亥俄州哥伦布的全栈型工程师组成，致力开发能服务我们社区，客户及朋友的科技。团队主要成员有Josh Green，Andrew Groot，Eliot Lesar和John Jamiel，我们作为终身科技爱好者，跟开放源码软件有不解之缘。</p>
+            <p>我们在2017年末，BCH硬分叉后数月开始了我们打造Bitcoin Verde的旅程。本著对贡献的热情，我们决定直接实践才是最好的学习方式。在踌躇由何开始之时，Josh发现到:大多数的节点客户端都是Bitcoin Core的分叉。在这之后，我们便意识到要完整学习并做出贡献，没有比从头新建更好的方法。于是Bitcoin Verde于2019年一月加入生态圈，主要的目的是给网络提供多样性。通过发布一个有索引的Java全节点，我们认为已经达成了这目标。</p>
+            <p>在开始之后我们与许多群体展开了合作来给社区做贡献，其中既有科技人员也有其他人。我们参与了许多讨论，给地方政府提供教育，与 Bitcoin Unlimited合约来给BCH提供详细规格，并继续改进我们的软件，这些工作都值得我们骄傲。过去几年，我们辛勤工作来确保这些工作对社区有意义、有价值。目前Bitcoin Verde提供一份全节点软件，区块浏览器，和开发工具库。我们希望未来能继续改良自家的软件，有一天能提供钱包和矿池模组。</p>
+            <h2 id="我们的目标">我们的目标</h2>
+            <p>我们今次的活动目标是获得足够的兴趣及支持，从而筹集到目前发展路线图的资金。现时Bitcoin Verde有四项核心功能，而我们相信对于BCH使用者,不管是全节点营运者还是矿工,以下四项功能都有助我们的方案维持竞争力:</p>
+            <ul>
+              <li>创造一个无索引模组</li>
+              <li>创造一个区块模板验证服务</li>
+              <li>实行Testnet配置</li>
+              <li>修改Bitcoin Verde Explorer(浏览器)以支持Memo(备忘)</li>
+            </ul>
+            <h2 id="工作計劃">工作計劃</h2>
+            <h3 id="创造一个无索引模组">创造一个无索引模组</h3>
+            <p>目前Bitcoin Verde提供很大部份的区块链索引,部份索引元件包括(但不限于):</p>
+            <ul>
+              <li><p>所有交易</p>
+              </li>
+              <li><p>所有输出及输入(包括消费及无消费)</p>
+              </li>
+              <li><p>P2PK/P2SH地址</p>
+              </li>
+              <li><p>SLP代币</p>
+              </li>
+              <li><p>SLP验证</p>
+              </li>
+              <li><p>受争议的/孤儿区块
+              这些索引对浏览器及钱包服务而言非常有用处,可是同时为验证服务带来很多弊病而且在挖出节点上没有实际用处。有见于此,创造一个无索引模组将会带来数个好处,有助我们达成团队目标—成为一个可行的挖矿选项。好处包括：</p>
+            </li>
+            <li><p>减少下载最初区块的时间</p>
+            </li>
+            <li><p>容许矿池在合理的时间下开始运行Bitcoin Verde节点</p>
+            </li>
+            <li><p>减少最低资源要求</p>
+            </li>
+            <li><p>降低矿工及无索引节点营运者的市场门槛</p>
+            </li>
+            <li><p>容许矿池营运者以较低的价格运行多余/后备节点</p>
+            </li>
+            <li><p>减少Bitcoin Verde节点的整体架构成本</p>
+            </li>
+          </ul>
+          <p><strong>解决方案</strong></p>
+          <p>使用cacheBlocks的情况下，区块被序列化并储存在硬碟内，很多有关交易、地址及SLP的SQL表格会被移除。</p>
+          <ul>
+            <li>创造一个新的交易表格，表格会列出硬碟内交易区块的储存位置和平面档案中交易的偏差值</li>
+            <li>已索引及标准化资料库比较浪费空间及低效能，因此转移已挖矿的交易到压缩格式的平面档案</li>
+            <li>为了保持模组间mempool/未核实交易的逻辑一致性,未核实交易将重新命名及重新使用较早的交易表格</li>
+            <li>索引及标准化未核实交易容许Bitcoin Verde维持无限的交易链结，而毋需任何额外开发</li>
+            <li>当交易在区块内被挖出，将会从未核实交易表格中删除，然后被储存在区块平面档案内</li>
+            <li>由于SQL交易表格档案小，单独索引未核实交易只在名义上增加硬碟的节点足印，同时容许将来功能的扩展及基于将来新区块作出的複杂决定</li>
+            <li>表格将会加入总交易大小及总费用，以改善区块模板的产生</li>
+          </ul>
+          <p>这些改动主要影响由TransactionDatabaseManager及相关类别封装的资料层，验证逻辑及网络逻辑可能会有轻微影响。多数现存的测试基于直接操控资料库的资料。</p>
+          <p>模式不同的情况下，运行这模组的模式改动时，这些测试将会损坏。由于原有的测试套件默认载入索引模式，所以这些模式改动不会导致原有的测试套件损坏。可是，在这配置下，很多测试将不会运行新模式，导致必要机能的测试复盖度上有一个颇大的落差。</p>
+          <ul>
+            <li>这份提案包含目前存在测试的扩展，以涵盖无索引模式及索引模式的复盖率。</li>
+          </ul>
+          <p><strong>里程碑、成果交付及预计难题</strong></p>
+          <p>我们预计完成此扩建部分需要180小时，我们的方案由三个里程碑组成，每一个里程碑都有不同的难度。我们提议基于预计难度及时间，按比例分配资金基于预计难度及时间去达成这些里程碑，而我们每完成一个里程碑将收到资金。</p>
+          <ol>
+            <li>重构SQL模式及转移资料层　<strong>80/180小时(45%)</strong></li>
+          </ol>
+          <p>第一个里程碑将包括如上所述的解决方案中的SQL模式及逻辑改动。移除所有表格及节点完成其main-net的初始区块下载，第一个里程碑才算完成。</p>
+          <ol start="2">
+            <li>为新资料层更新测试 <strong>60 / 180 小时 (33%)</strong></li>
+          </ol>
+          <p>第二个里程碑将更新所有损坏测试，以保证现存回归测试会通过。此外，第二个里程碑包括扩大现存测试套件以运行无索引模式及索引模式。</p>
+          <ol start="3">
+            <li>透过区块模板聚合器测试main-net一个月 <strong>40 / 180 小时 (22%)</strong></li>
+          </ol>
+          <p>节点同步到main-net后及节点区块模板与Bitcoin ABC、Bitcoin Unlimited nodes相容后，第三个里程碑将会总合以上。完成此里程碑需要更新包含在2020-05升级的新sigops规则集及完成区块模板聚合器，这样其他运行目前main-net节点的软件才能自动验证Bitcoin Verde产生的区块模板。在没有不相容的情况下，创造main-net区块模板达一个月后，第三个里程碑即告完成。</p>
+          <h3 id="区块模板验证服务">区块模板验证服务</h3>
+          <p>由于节点不相容性，矿工挖出的区块有造成区链断裂或孤儿化的风险。以矿工的观点而言，再微细的相容性风险也可能对收益造成极大的影响。这些相容性风险会促使矿工和矿池使用同一个节点运算，此举会大量减少矿工间的节点多样化。</p>
+          <p>这区块模板验证服务(TVS)目的在于将矿工创造无效区块的风险减少至接近零，方法为在开始任何区块模板工作前，先兴其他软件验证区块模板的有效性。此举好处如下；</p>
+          <p>—　减低无意中挖出会造成区块链断裂的区块的风险
+            —　减低矿工使用不同节点运算的经济风险
+            —　增加矿工对节点多样化的信心
+          —　提醒开发者不相容区块的可能性</p>
+          <p><strong>解决方案</strong></p>
+          <p>创造一个可连接至不同节点软件最新版本的服务（验证节点）：</p>
+          <ul>
+            <li>BCHD</li>
+            <li>Bitcoin ABC</li>
+            <li>Bitcoin Unlimited</li>
+            <li>Bitcoin Verde</li>
+            <li>Flowee The Hub</li>
+          </ul>
+          <p>如BIP-22、BIP-23、BIP-9及BIP-145列明中，此服务会接受getblocktemplate的标准区块模板。</p>
+          <p>一旦接收到区块模板，此服务会保证每一个有效节点会见到区块模板中的每项交易。</p>
+          <ul>
+            <li>服务尝试为每一个运算验证区块模板</li>
+            <li>服务之后回复请求方有否发现无效模板</li>
+          </ul>
+          <p>软件会尽最大努力去确定哪项交易触发区块模板的无效性，这样请求方就能选择省略它们。</p>
+          <p>有效节点有机会不能够验证区块模板，此解决方案会</p>
+          <ul>
+            <li>界定正式BIP去扩展getblocktemplate,以便其提案模式为了区块资料容许一个无视验证证明的标记</li>
+            <li>创造参考性节点运算，然后为Bitcoin ABC拉出请求以完成以上getblocktemplate扩展</li>
+          </ul>
+          <p>由于目前主要市场佔有率，为Bitcoin ABC提供运算</p>
+          <ul>
+            <li>如其他运算软件提供相似的所需功能性，但没有直接使用getblocktemplate，这个问题将来可能会被延续，以达成那些运算软件的相容性。</li>
+          </ul>
+          <p>Bitcoin Verde目前不支持getblocktemplate的提案模式，这个问题将改动目前相等的功能性以赶上getblocktemplate RPC API，包括提案模式。</p>
+          <p><strong>里程碑预计及成果交付</strong></p>
+          <p>我们预计完成此扩建部分需要160小时，我们的方案由四个里程碑组成，每一个里程碑都有不同的难度。我们提议基于预计难度及时间，按比例分配资金基于预计难度及时间去达成这些里程碑，而我们每完成一个里程碑将收到资金。</p>
+          <ol>
+            <li>界定服务API,以验证区块模板。 <strong>30/160 小时 (18.75%)</strong></li>
+            <li>调用多款RPC getblocktemplate:proposal援助已连接节点,以验证区块模板，然后退回验证状态。　<strong>30/160 小时 (18.75%)</strong></li>
+            <li>创造正式BIP去扩展目前getblocktemplate:proposal的功能性，然后为Bitcoin ABC参考运算。　<strong>60/160 小时 (37.5%)</strong></li>
+            <li>改动Bitcoin Verde以完成以上计划的BIP。　<strong>40 / 160 小时 (25%)</strong></li>
+          </ol>
+          <h3 id="实行testnet配置">实行Testnet配置</h3>
+          <p>目前Bitcoin Verde只容许mainnet的连接。即使历史上边缘案例的测试已经透过公众单元测试完成无数遍，另外还是有整合测试显示出Bitcoin Verde连接testnet有不少好处，特别在硬分叉的时候testnet被大幅使用。</p>
+          <p>如果Bitcoin Verde和其他运算软件的不同会导致不同种类的测试交易，Bitcoin Verde连接到testnet，其对测试BCH的独特观点还可以为其他运算软件提供帮助。</p>
+          <p>这还未被实行的众多原因之一，是testnet在交易及区块如何被传递、验证及挖出上，有一连串的不同。因此，这些不同之处在新的配置下，必需被设为可切换的。</p>
+          <p>此解决方案会提供：</p>
+          <ul>
+            <li>一个额外测试模式，与现时相比会提供更多好处</li>
+            <li>在testnet上比较少被禁止的边缘交易案例，增加其曝光率</li>
+            <li>为硬分叉测试改进与其他节点运算软件的协调</li>
+          </ul>
+          <p><strong>解决方案</strong></p>
+          <p>即管Bitcoin Verde目前没有执行交易的标准度，也应该採取措施以保证如果/当Bitcoin Verde增加标准度检查,这些检查在连接到testnet的时候不会生效。</p>
+          <p>为了与testnet合作，需要以下更新：</p>
+          <ul>
+            <li>可替代的备用端口号码,magic number及DNS种子</li>
+            <li>不同地址版本号码及prefix</li>
+            <li>不同的genesis block</li>
+            <li>额外难度调整规则</li>
+          </ul>
+          <p><strong>里程碑预计及成果交付</strong></p>
+          <p>我们预计完成此扩建部分需要60小时，我们的方案由两个里程碑组成，每一个里程碑都有不同的难度。我们提议基于预计难度及时间，按比例分配资金基于预计难度及时间去达成这些里程碑，而我们每完成一个里程碑将收到资金。</p>
+          <ol>
+            <li>使用不同静态内容更新元件。　<strong>20 / 60 小时　(33%)</strong></li>
+          </ol>
+          <p>第一个里程碑是纯粹与BCH testnet进行通信所需的改变，包括端口号码，任何会影响网络协议的讯息内容及genesis block的资料。当所有元件完成更新及公布，第一个里程碑便算完成。</p>
+          <ol start="2">
+            <li>保证完全同步的可行性　<strong>40 / 60小时 (67%)</strong></li>
+          </ol>
+          <p>第二个里程碑将需要我们更新交易及区块验证规则，以保证Bitcoin Verde将可能接受它现在要求及接收的内容。只有确认完全同步的时候，第二个里程碑就会完成。</p>
+          <h3 id="修改bitcoin-verde-explorer浏览器">修改Bitcoin Verde Explorer(浏览器)</h3>
+          <p>Bitcoin Verde节点及浏览器目前不支持Memo(备忘)。终端使用者及开发者依赖区块浏览器去检查他们区块链行动的真实性。</p>
+          <p>浏览器现时提供的支援虽不多，但尚有很大的发挥空间。我们完全支援SLP and Memo的话，将会为其他浏览器带来更多可行的备用选择，而浏览器使用者和营运者亦会有更多平台可供选用。</p>
+          <p>这些额外的功能令其他开发人员轻易检视到Bitcoin Verde的验证结果，这对本身不会被矿工验证的OP_RETURN-like应用来说，更是有莫大的价值。</p>
+          <p>总括而言，改动将会：</p>
+          <ul>
+            <li>吸引会透过Memo protocol发讯息的使用者使用Bitcoin Verde explorer</li>
+            <li>容许其他开发人员轻易检视他们OP_RETURN-based交易的真实性，从而交叉验证其执行及一致性</li>
+            <li>继续支援legacy地址格式，另加入CashAddr支援</li>
+          </ul>
+          <p><strong>解决方案</strong></p>
+          <p>加入Memo支援</p>
+          <ul>
+            <li>Bitcoin Verde将会解析Memo protocol交易</li>
+            <li>节点将索引Memo交易</li>
+            <li>执行程序为已同步的节点back-port索引</li>
+            <li>更新RPC calls以涵盖Memo data，类似为SLP提供的功能</li>
+            <li>更新浏览器API以涵盖Memo data</li>
+            <li>浏览器将显示已列表的Memo data，类似bitcoin.com</li>
+          </ul>
+          <p><strong>里程碑预计及成果交付</strong></p>
+          <p>我们预计完成此扩建部分需要５６小时，我们的方案由两个里程碑组成，每一个里程碑都有不同的难度。我们提议基于预计难度及时间，按比例分配资金基于预计难度及时间去达成这些里程碑，而我们每完成一个里程碑将收到资金。</p>
+          <ol>
+            <li>Bitcoin Verde (节点) Memo支援  <strong>40 / 56 小时 (71.5%)</strong></li>
+          </ol>
+          <p>第一个里程碑包含所有节点所需的改动以支持Memo protocol，包括RPC calls。此里程碑不包括浏览器的所有Memo支援。</p>
+          <ol start="2">
+            <li>Bitcoin Verde (节点) 浏览器支援 <strong>16 / 56 小时 (28.5%)</strong></li>
+          </ol>
+          <p>第二个里程碑包含所有浏览器的改动以支持Memo protocol。</p>
+          <h2 id="资金请求">资金请求</h2>
+          <p>总结如上，我们预期下一个开发周期将耗时大约456小时，由三个工程师及一个技术写作员完成。以每小时0.6　BCH工资来计算，这提案的资金请求总数为273.6 BCH。然而，在建立这筹资活动前，如GitHub上独立事项所示，Josh Green已经为每项功能撰写了筹资提案。</p>
+          <p>基于我们已经交付了个别的成果并筹集到24.838 BCH资金这点，不扣除这些资金将会是一个不负责任的做法。所以经调整后，剩下的筹资总数为241.162 BCH或大约$62,000，而资金可被分为4个成果交付，总数11个里程碑。</p>
+          <h2 id="感谢">感谢</h2>
+          <p>开展这个计划是一个大工程。全赖社区不断的慷慨支持，我们的营运才能延续至今。我们感谢每个网络及所有捐助者的给予的机会，希望我们可以继续在BCH社区佔一席位及为社区的茁壮成长作出贡献。</p>
+        </section>
+      </article>
+
+      <!-- Campaign sidebar -->
+      <aside class="col s12 m12 l4">
+        <section>
+          <h3 style="float: left;">
+            <span class="valign-wrapper" style="float: left;">
+              <i class="icon-face"></i>
+              <b id="campaignRecipientCount">1</b>
+              <span data-string="recipientsLabel">受益人</span>
+            </span>
+          </h3>
+          <hr>
+          <ul id="recipientList" class="row" style="margin-bottom: 3rem;"><li class="col s6 m6 l12">
+            <a href="https://bitcoinverde.org/">
+              <img src="img/verde-logo.png" alt="Bitcoin Verde">
+              <span>
+                <b>Bitcoin Verde</b>
+                <i>241 BCH</i>
+              </span>
+            </a>
+          </li></ul>
+        </section>
+
+        <section>
+          <h3 style="float: left;">
+            <span class="valign-wrapper" style="float: left;">
+              <i class="icon-favorite_border"></i>
+              <b id="campaignContributorCount">29</b>
+              <span data-string="contributorsLabel">捐款人</span>
+            </span>
+          </h3>
+          <hr>
+          <ul id="contributionList"><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -10.65s; background-position: 0px 1.35rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">64%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Marc De Mesel</b>
+                <small class="contributionAmount">154.88 BCH</small>
+              </span>
+              <q class="contributionComment">Thank you Bitcoin Verde for keeping Bitcoin Cash decentralized and adding value</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -2.78s; background-position: 0px 3.02rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">16%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Marc De Mesel</b>
+                <small class="contributionAmount">39.74 BCH</small>
+              </span>
+              <q class="contributionComment">Want To See You Succeed</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -5.92s; background-position: 0px 3.38rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">6%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">btcfork</b>
+                <small class="contributionAmount">15.25 BCH</small>
+              </span>
+              <q class="contributionComment">I really like this project and what they are doing for Bitcoin Cash. Healthy protocol, diversity of clients.</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -0.6s; background-position: 0px 3.44rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">5%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">molecular</b>
+                <small class="contributionAmount">11.09 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -11.14s; background-position: 0px 3.45rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">4%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">atomic</b>
+                <small class="contributionAmount">10.03 BCH</small>
+              </span>
+              <q class="contributionComment">Block Template Validation Service is an amazing idea!</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -13.05s; background-position: 0px 3.58rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">1%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">satoshis mom</b>
+                <small class="contributionAmount">1.72 BCH</small>
+              </span>
+              <q class="contributionComment">not making my son learn java was a mistake</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -8.68s; background-position: 0px 3.58rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">1%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Henry Cashlitt</b>
+                <small class="contributionAmount">1.52 BCH</small>
+              </span>
+              <q class="contributionComment">Bitcoin Cash (BCH): 💰⚡️ Upgraded money for the world</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -11.62s; background-position: 0px 3.58rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">1%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Sur_Clyde_Hoffenfelder</b>
+                <small class="contributionAmount">1.30 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -2.64s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">emergent_reasons#100</b>
+                <small class="contributionAmount">0.51 BCH</small>
+              </span>
+              <q class="contributionComment">FYI Large pledges will allow more people to participate by reducing the minimum.</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -14.71s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Why cryptocurrencies?</b>
+                <small class="contributionAmount">0.51 BCH</small>
+              </span>
+              <q class="contributionComment">https://whycryptocurrencies.com/</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -1.34s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Ant-n</b>
+                <small class="contributionAmount">0.46 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -2.26s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">thanks for the work!</b>
+                <small class="contributionAmount">0.41 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -3.31s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Amora</b>
+                <small class="contributionAmount">0.41 BCH</small>
+              </span>
+              <q class="contributionComment">BCH for the win!</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -12.62s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Anonymous</b>
+                <small class="contributionAmount">0.41 BCH</small>
+              </span>
+              <q class="contributionComment">Thanks</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -13.91s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Omar</b>
+                <small class="contributionAmount">0.40 BCH</small>
+              </span>
+              <q class="contributionComment">Bitcoin Cash (BCH): best money for the world! Thank you all BCH developers for your hard work. </q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -10.71s; background-position: 0px 3.59rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Sur_Clyde_Hoffenfelder</b>
+                <small class="contributionAmount">0.37 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -9.62s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">BitcoinOutLoud</b>
+                <small class="contributionAmount">0.32 BCH</small>
+              </span>
+              <q class="contributionComment">Node diversity FTW!!!</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -14.24s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                <small class="contributionAmount">0.25 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -13.05s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Eric Reid</b>
+                <small class="contributionAmount">0.20 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -7.02s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">spice_trader#44148</b>
+                <small class="contributionAmount">0.19 BCH</small>
+              </span>
+              <q class="contributionComment">Keep up the stellar work!</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -8.93s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Kyle Benzle</b>
+                <small class="contributionAmount">0.14 BCH</small>
+              </span>
+              <q class="contributionComment">Kick Amury out of Bitcoin.</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -13.34s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Jonathan Silverblood</b>
+                <small class="contributionAmount">0.13 BCH</small>
+              </span>
+              <q class="contributionComment">It might not be much, but I hope the thought counts.</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -5.37s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Lopokoko</b>
+                <small class="contributionAmount">0.12 BCH</small>
+              </span>
+              <q class="contributionComment">P2P Electronic Cash for the world! </q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -8.65s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                <small class="contributionAmount">0.11 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -13.13s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">Collin</b>
+                <small class="contributionAmount">0.11 BCH</small>
+              </span>
+              <q class="contributionComment">Dat green tho</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -12.1s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">TPB_Julian</b>
+                <small class="contributionAmount">0.11 BCH</small>
+              </span>
+              <q class="contributionComment">Let's get those cacheBlocks</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -5.72s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                <small class="contributionAmount">0.11 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -14.86s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias">n00b</b>
+                <small class="contributionAmount">0.10 BCH</small>
+              </span>
+              <q class="contributionComment">all my booze money for May</q>
+            </span>
+          </li><li>
+            <div>
+              <div class="contributionWaves" style="animation-delay: -13.11s; background-position: 0px 3.6rem;"></div>
+              <div class="contributionDisplay"></div>
+              <span class="contributionPercent">0%</span>
+            </div>
+            <span>
+              <span>
+                <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                <small class="contributionAmount">0.10 BCH</small>
+              </span>
+              <q class="contributionComment" style="display: none;"></q>
+            </span>
+          </li></ul>
+        </section>
+      </aside>
+    </main>
+
+  </div>
+</div>
+
+<!-- Site footer -->
+<footer class="page-footer green">
+  <div class="container">
+    <div class="row">
+      <div class="col l5 s12">
+        <h5 class="white-text" data-string="footerLabel">关于我们</h5>
+        <p class="grey-text text-lighten-4" data-string="footerText">我们是来自社区的志愿者。我们认为有必要建立起高效且可持续的自愿捐赠机制。Flipstarter创建了一种无需托管的、无需高信任的募资方式。</p>
+      </div>
+      <div class="col l2 m4 s4 offset-l1">
+        <h5 class="white-text" data-string="socialLabel">社交平台</h5>
+        <ul>
+          <li>
+            <a class="white-text valign-wrapper" href="https://twitter.com/flipstartercash">
+              <i class="icon-chat"></i>
+              &nbsp;
+              <span data-string="twitter">推特</span>
+            </a>
+          </li>
+          <li>
+            <a class="white-text valign-wrapper" href="https://read.cash/@flipstarter">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="read.cash">Read.cash</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col l2 m4 s4">
+        <h5 class="white-text" data-string="contactLabel">联系我们</h5>
+        <ul>
+          <li>
+            <a class="white-text valign-wrapper" href="mailto:info@flipstarter.cash">
+              <i class="icon-email"></i>
+              &nbsp;
+              <span data-string="email">邮箱</span>
+            </a>
+          </li>
+          <li>
+            <a class="white-text valign-wrapper" href="mailto:security@flipstarter.cash">
+              <i class="icon-security"></i>
+              &nbsp;
+              <span data-string="security">安全</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col l2 m4 s4">
+        <h5 class="white-text" data-string="codeLabel">代码</h5>
+        <ul>
+          <li>
+            <a class="white-text valign-wrapper" href="https://gitlab.com/groups/flipstarter/-/issues">
+              <i class="icon-report_problem"></i>
+              &nbsp;
+              <span data-string="issues">问题</span>
+            </a>
+          </li>
+          <li>
+            <a class="white-text valign-wrapper" href="https://gitlab.com/flipstarter">
+              <i class="icon-code"></i>
+              &nbsp;
+              <span data-string="source">源代码</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container center" style="opacity: 0.65;">
+      <span data-string="copyright">版权所有（2020），供公共使用</span>
+      <a href="https://gitlab.com/emergent-reasons/funding-traction/blob/master/LICENSE" style="color: inherit; border-bottom: 1px dashed rgba(256, 256, 256, 0.33)" data-string="license">MIT许可。</a>
+    </div>
+  </div>
+</footer>
+
+<div id="languageSelector" class="fixed-action-btn">
+  <b id="currentLanguage" data-string="changeLanguage">
+    <a href="/">🇬🇧</a>
+    <a href="/zh">🇨🇳</a>
+    <a href="/es">🇪🇸</a>
+  </b>
+</div>
+
+<!-- -->
+<template id="recipientTemplate">
+  <li class="col s6 m6 l12">
+    <a>
+      <img>
+      <span>
+        <b></b>
+        <i></i>
+      </span>
+    </a>
+  </li>
+</template>
+<template id="contributionTemplate">
+  <li>
+    <div>
+      <div class="contributionWaves"></div>
+      <div class="contributionDisplay"></div>
+      <span class="contributionPercent"></span>
+    </div>
+    <span>
+      <span>
+        <b class="contributionAlias"></b>
+        <small class="contributionAmount"></small>
+      </span>
+      <q class="contributionComment"></q>
+    </span>
+  </li>
+</template>
+<template id="emptyContributionMessage">
+  <li style="display: block; text-align: center; color: rgba(0, 0, 0, 0.5); padding: 2rem;">
+    <i data-string="contributorEmpty1">还没有人捐款。</i>
+    <br>
+    <i data-string="contributorEmpty2">成为第一个捐款人。</i>
+  </li>
+</template>
+
+<!-- Load the javascript as the last step to ensure fastest load time. -->
+<!-- <script src="js/application.js"></script> -->
+
+<!-- -->
+<audio src="snd/applause.mp3" id="applause"></audio>
+
+
+</body>
+</html>
